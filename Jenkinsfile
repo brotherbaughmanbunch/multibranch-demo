@@ -5,16 +5,10 @@ node {
     }
     stage('Main') {
         docker.image("golang:${params.goVersion}").inside {
-            sh '''
-                go version
-                go build -v hello-world.go
-            '''
+            echo "Main"
         }
     }
     stage('Post') {
-        sh '''
-            ls -l
-            ./hello-world
-        '''
+        echo "Post"
     }
 }
