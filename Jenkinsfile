@@ -4,9 +4,11 @@ node {
         checkout scm
     }
     stage('Main') {
-        docker.image("golang:${params.goVersion}").inside {
-            echo "Main"
-        }
+        echo "Main"
+    }
+    stage('Deploy to Prod') {
+        input message: 'Ready to deploy to Prod?', ok: 'Yes', cancel: 'No'
+        echo 'Deploying...'
     }
     stage('Post') {
         echo "Post"
